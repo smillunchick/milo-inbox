@@ -1,5 +1,4 @@
-const crypto = require('crypto');
-const https = require('https');
+import crypto from 'crypto';
 
 const pe = (s) => encodeURIComponent(s).replace(/!/g,'%21').replace(/\*/g,'%2A').replace(/'/g,'%27').replace(/\(/g,'%28').replace(/\)/g,'%29');
 
@@ -20,8 +19,9 @@ function sign(method, url, params, ck, cs, at, as) {
   return 'OAuth ' + Object.keys(op).sort().map(k => pe(k) + '="' + pe(op[k]) + '"').join(', ');
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method === 'GET') return res.status(200).json({ status: 'ok', service: 'milo-tweet' });
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
   const authKey = req.headers['x-api-key'];
@@ -32,27 +32,24 @@ module.exports = async (req, res) => {
 
   const env = process.env;
   const ck = env.TW_CK, cs = env.TW_CS, at = env.TW_AT, as = env.TW_AS;
-  if (!ck || !cs || !at || !as) return res.status(500).json({ error: 'creds not set' });
+  if (!ck || !cs || !at || !as) return res.status(500).json({ error: 'Twitter creds not set' });
 
   const apiUrl = 'https://api.twitter.com/2/tweets';
   const body = JSON.stringify({ text });
   const auth = sign('POST', apiUrl, {}, ck, cs, at, as);
 
-  return new Promise((resolve) => {
-    const u = new URL(apiUrl);
-    const r = https.request({
-      hostname: u.hostname, path: u.pathname, method: 'POST',
-      headers: { 'Authorization': auth, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) }
-    }, (response) => {
-      let d = '';
-      response.on('data', c => d += c);
-      response.on('end', () => {
-        try { res.status(response.statusCode).json(JSON.parse(d)); }
-        catch(e) { res.status(response.statusCode).json({ raw: d }); }
-        resolve();
-      });
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': auth,
+        'Content-Type': 'application/json',
+      },
+      body,
     });
-    r.on('error', (e) => { res.status(500).json({ error: e.message }); resolve(); });
-    r.write(body); r.end();
-  });
-};
+    const data = await response.json();
+    return res.status(response.status).json(data);
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+}
