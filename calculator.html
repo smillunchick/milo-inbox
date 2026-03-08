@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much Is Manual Work Costing You? — Free AI Savings Calculator | Milo</title>
+  <meta name="description" content="Find out exactly how much time and money your business loses to manual tasks every month. Free calculator — no signup required.">
+  <meta property="og:title" content="How Much Is Manual Work Costing You? — Free AI Savings Calculator">
+  <meta property="og:description" content="Most small businesses waste thousands per month on tasks AI handles better. See your exact number in 60 seconds.">
+  <link rel="stylesheet" href="milo-design-system.css">
+  <link rel="canonical" href="https://getmilo.dev/calculator">
+  <style>
+    .calc-hero { padding: var(--space-20) 0 var(--space-12); background: var(--copper-wash); text-align: center; }
+    .calc-hero h1 { max-width: 700px; margin: 0 auto var(--space-4); }
+    .calc-hero p { max-width: 560px; margin: 0 auto; }
+    .calculator { max-width: 720px; margin: calc(-1 * var(--space-10)) auto var(--space-16); background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--space-10); position: relative; z-index: 2; }
+    .calc-step { margin-bottom: var(--space-8); padding-bottom: var(--space-8); border-bottom: 1px solid var(--border-light); }
+    .calc-step:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .calc-step__label { font-weight: 600; font-size: var(--text-base); color: var(--slate); margin-bottom: var(--space-2); }
+    .calc-step__hint { font-size: var(--text-sm); color: var(--graphite); margin-bottom: var(--space-4); }
+    .calc-input-row { display: flex; gap: var(--space-4); align-items: center; }
+    .calc-input { flex: 1; padding: var(--space-3) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-md); font-family: var(--font-body); font-size: var(--text-base); color: var(--slate); background: var(--white); transition: border-color 0.2s; }
+    .calc-input:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 3px var(--copper-10); }
+    .calc-select { padding: var(--space-3) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-md); font-family: var(--font-body); font-size: var(--text-base); color: var(--slate); background: var(--white); cursor: pointer; }
+    .calc-slider { width: 100%; -webkit-appearance: none; height: 6px; background: var(--border); border-radius: 3px; outline: none; }
+    .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--copper); cursor: pointer; box-shadow: 0 2px 6px rgba(196,122,90,0.3); }
+    .slider-labels { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--ash); margin-top: var(--space-2); }
+    .calc-value-display { font-family: var(--font-mono); font-size: var(--text-lg); font-weight: 600; color: var(--copper); min-width: 80px; text-align: right; }
+    .results { display: none; margin-top: var(--space-10); }
+    .results.visible { display: block; }
+    .results-header { text-align: center; margin-bottom: var(--space-8); }
+    .results-header h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-bottom: var(--space-8); }
+    @media (max-width: 640px) { .results-grid { grid-template-columns: 1fr; } }
+    .result-card { background: var(--warm-gray); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; }
+    .result-card--highlight { background: var(--slate); color: var(--white); }
+    .result-card__number { font-family: var(--font-heading); font-size: var(--text-3xl); color: var(--copper); line-height: 1.1; margin-bottom: var(--space-2); }
+    .result-card--highlight .result-card__number { color: #F0A882; }
+    .result-card__label { font-size: var(--text-sm); color: var(--graphite); }
+    .result-card--highlight .result-card__label { color: rgba(255,255,255,0.7); }
+    .results-breakdown { background: var(--warm-gray); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-8); }
+    .breakdown-row { display: flex; justify-content: space-between; padding: var(--space-2) 0; font-size: var(--text-sm); border-bottom: 1px solid var(--border-light); }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-label { color: var(--graphite); }
+    .breakdown-value { font-weight: 600; color: var(--slate); }
+    .breakdown-value--savings { color: var(--success); }
+    .results-cta { background: var(--slate); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; }
+    .results-cta h3 { color: var(--white); margin-bottom: var(--space-3); }
+    .results-cta p { color: rgba(255,255,255,0.7); margin-bottom: var(--space-6); font-size: var(--text-sm); }
+    .email-capture { display: flex; gap: var(--space-3); max-width: 460px; margin: 0 auto; }
+    @media (max-width: 640px) { .email-capture { flex-direction: column; } }
+    .email-capture input { flex: 1; padding: var(--space-3) var(--space-4); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-md); background: rgba(255,255,255,0.1); color: var(--white); font-family: var(--font-body); font-size: var(--text-sm); }
+    .email-capture input::placeholder { color: rgba(255,255,255,0.5); }
+    .social-proof { max-width: 720px; margin: 0 auto var(--space-16); text-align: center; }
+    .social-proof p { font-size: var(--text-sm); color: var(--ash); }
+    .footer__logo-text { font-family: var(--font-heading); font-size: var(--text-xl); color: var(--white); letter-spacing: -0.03em; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="milo-icon.svg" alt="" class="nav__logo-icon">
+        <span class="nav__logo-text">milo</span>
+      </a>
+      <div class="nav__links">
+        <a href="/agents" class="nav__link">AI Agents</a>
+        <a href="/industries" class="nav__link">Industries</a>
+        <a href="/security" class="nav__link">Security</a>
+        <a href="/blog" class="nav__link">Guides</a>
+        <a href="/agents" class="btn btn--primary btn--sm">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="calc-hero">
+    <div class="container">
+      <div class="caption mb-6">Takes 60 seconds. No signup required.</div>
+      <h1>How much is manual work actually costing your business?</h1>
+      <p class="lead">Most small business owners underestimate this number by 3-5x. Plug in your real numbers and find out.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="calculator" id="calculator">
+      <div class="calc-step">
+        <div class="calc-step__label">What industry are you in?</div>
+        <div class="calc-step__hint">This helps us estimate industry-specific savings.</div>
+        <select class="calc-select" id="industry" style="width: 100%;">
+          <option value="">Select your industry...</option>
+          <option value="dental">Dental / Medical Practice</option>
+          <option value="hvac">HVAC / Home Services</option>
+          <option value="realestate">Real Estate</option>
+          <option value="law">Law Firm</option>
+          <option value="insurance">Insurance Agency</option>
+          <option value="consulting">Consulting / Coaching</option>
+          <option value="agency">Marketing / Creative Agency</option>
+          <option value="ecommerce">E-commerce</option>
+          <option value="restaurant">Restaurant / Hospitality</option>
+          <option value="other">Other Small Business</option>
+        </select>
+      </div>
+      <div class="calc-step">
+        <div class="calc-step__label">How many people work in your business?</div>
+        <div class="calc-step__hint">Include yourself. This estimates how much total time is spent on admin.</div>
+        <div class="calc-input-row">
+          <input type="range" class="calc-slider" id="teamSize" min="1" max="50" value="3">
+          <div class="calc-value-display" id="teamSizeDisplay">3</div>
+        </div>
+        <div class="slider-labels"><span>Just me</span><span>10</span><span>25</span><span>50+</span></div>
+      </div>
+      <div class="calc-step">
+        <div class="calc-step__label">How many hours per week do you or your team spend on these tasks?</div>
+        <div class="calc-step__hint">Scheduling, follow-ups, data entry, answering routine questions, sending reminders, outreach, reporting.</div>
+        <div class="calc-input-row">
+          <input type="range" class="calc-slider" id="adminHours" min="5" max="80" value="20">
+          <div class="calc-value-display" id="adminHoursDisplay">20 hrs</div>
+        </div>
+        <div class="slider-labels"><span>5 hrs</span><span>20 hrs</span><span>40 hrs</span><span>80+ hrs</span></div>
+      </div>
+      <div class="calc-step">
+        <div class="calc-step__label">What do you estimate that time costs per hour?</div>
+        <div class="calc-step__hint">Include salary, benefits, and opportunity cost.</div>
+        <div class="calc-input-row">
+          <input type="range" class="calc-slider" id="hourlyRate" min="15" max="150" value="35" step="5">
+          <div class="calc-value-display" id="hourlyRateDisplay">$35/hr</div>
+        </div>
+        <div class="slider-labels"><span>$15/hr</span><span>$50/hr</span><span>$100/hr</span><span>$150/hr</span></div>
+      </div>
+      <div class="calc-step">
+        <div class="calc-step__label">How many leads or customers do you lose per month to slow follow-up?</div>
+        <div class="calc-step__hint">Be honest. If you don't know, that is a sign it is more than you think.</div>
+        <div class="calc-input-row">
+          <input type="range" class="calc-slider" id="lostLeads" min="0" max="50" value="5">
+          <div class="calc-value-display" id="lostLeadsDisplay">5</div>
+        </div>
+        <div class="slider-labels"><span>0</span><span>10</span><span>25</span><span>50+</span></div>
+      </div>
+      <div class="calc-step">
+        <div class="calc-step__label">What is an average customer worth to you?</div>
+        <div class="calc-step__hint">Average revenue per customer, per year.</div>
+        <div class="calc-input-row">
+          <span style="font-size: var(--text-lg); color: var(--graphite);">$</span>
+          <input type="number" class="calc-input" id="customerValue" value="500" min="50" max="100000" step="50">
+        </div>
+      </div>
+      <button class="btn btn--primary btn--lg btn--full" id="calculateBtn" style="margin-top: var(--space-4);">Show Me What I Am Losing</button>
+
+      <div class="results" id="results">
+        <div class="results-header">
+          <h2>Here is what manual work costs you</h2>
+          <p style="color: var(--graphite);">Based on your numbers, not ours.</p>
+        </div>
+        <div class="results-grid">
+          <div class="result-card"><div class="result-card__number" id="monthlyTimeCost">$0</div><div class="result-card__label">Monthly cost of admin time</div></div>
+          <div class="result-card"><div class="result-card__number" id="monthlyLeadLoss">$0</div><div class="result-card__label">Monthly lost revenue from missed leads</div></div>
+          <div class="result-card result-card--highlight"><div class="result-card__number" id="totalMonthlyLoss">$0</div><div class="result-card__label">Total you are losing every month</div></div>
+        </div>
+        <div class="results-breakdown">
+          <h3 style="font-size: var(--text-base); margin-bottom: var(--space-4);">What AI agents would change</h3>
+          <div class="breakdown-row"><span class="breakdown-label">Admin hours automated (70-80%)</span><span class="breakdown-value breakdown-value--savings" id="hoursSaved">0 hrs/week</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Time cost recovered per month</span><span class="breakdown-value breakdown-value--savings" id="timeSaved">$0</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Leads recovered with instant follow-up (50%)</span><span class="breakdown-value breakdown-value--savings" id="leadsRecovered">0</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Revenue recovered per month</span><span class="breakdown-value breakdown-value--savings" id="revRecovered">$0</span></div>
+          <div class="breakdown-row" style="border-top: 2px solid var(--border); padding-top: var(--space-3); margin-top: var(--space-2);"><span class="breakdown-label" style="font-weight: 600; color: var(--slate);">Total monthly savings</span><span class="breakdown-value breakdown-value--savings" id="totalSavings" style="font-size: var(--text-lg);">$0</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Your AI agent running cost</span><span class="breakdown-value">~$30-50/month</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">One-time setup (pays for itself in...)</span><span class="breakdown-value" id="roiTimeline">—</span></div>
+        </div>
+        <div class="results-cta" style="background: var(--copper); margin-bottom: var(--space-6);">
+          <h3>Ready to stop losing money? Start with one agent.</h3>
+          <p>$399 one-time setup. No monthly fees. Pays for itself in the first week based on your numbers above.</p>
+          <a href="/agents#pricing" class="btn btn--primary" style="background: var(--white); color: var(--copper); font-weight: 600;">Get Your AI Agent Team — $399</a>
+          <p style="margin-top: var(--space-3); font-size: var(--text-xs); color: rgba(255,255,255,0.5);">Use code <strong>EARLYMILO25</strong> for 25% off at checkout.</p>
+        </div>
+        <div class="results-cta">
+          <h3>Or get a free blueprint first</h3>
+          <p>No pitch. No commitment. A custom AI agent plan for your business. We send it within 24 hours.</p>
+          <div class="email-capture">
+            <input type="email" id="captureEmail" placeholder="you at your company dot com">
+            <button class="btn btn--primary" id="getBlueprintBtn">Send My Free Blueprint</button>
+          </div>
+          <p style="margin-top: var(--space-3); font-size: var(--text-xs); color: rgba(255,255,255,0.4);">No spam. No sales pressure. Just your custom blueprint.</p>
+        </div>
+      </div>
+    </div>
+    <div class="social-proof"><p>Trusted by small business owners in dental, HVAC, real estate, law, insurance, and consulting</p></div>
+  </div>
+
+  <section class="section section--tinted">
+    <div class="container container--narrow text-center">
+      <h2 class="mb-4">The businesses that automate first will win. The rest will wonder what happened.</h2>
+      <p class="lead mb-8">In 2026, AI is not optional. The gap between businesses using it and businesses ignoring it grows wider every week.</p>
+      <a href="/agents" class="btn btn--primary btn--lg">See What AI Agents Can Do</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="milo-icon.svg" alt="" class="footer__logo-icon">
+            <span class="footer__logo-text">milo</span>
+          </div>
+          <p class="footer__brand-text">Stop paying humans for work machines do better. One-time setup. You own it all.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer__links">
+            <li><a href="/agents">AI Agent Teams</a></li>
+            <li><a href="/security">Security Hardening</a></li>
+            <li><a href="/ainative">AI Native Setup</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul class="footer__links">
+            <li><a href="/blog">Guides</a></li>
+            <li><a href="/scanner">Free Scanner</a></li>
+            <li><a href="https://github.com/getmilodev">GitHub</a></li>
+            <li><a href="https://x.com/getmilo_dev">@getmilo_dev</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Milo</span>
+        <span>Privacy &middot; Terms</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var sliders = [
+      { id: 'teamSize', display: 'teamSizeDisplay', format: function(v) { return v; } },
+      { id: 'adminHours', display: 'adminHoursDisplay', format: function(v) { return v + ' hrs'; } },
+      { id: 'hourlyRate', display: 'hourlyRateDisplay', format: function(v) { return '$' + v + '/hr'; } },
+      { id: 'lostLeads', display: 'lostLeadsDisplay', format: function(v) { return v; } }
+    ];
+    sliders.forEach(function(s) {
+      var el = document.getElementById(s.id);
+      var disp = document.getElementById(s.display);
+      el.addEventListener('input', function() { disp.textContent = s.format(el.value); });
+    });
+
+    var industryData = {
+      dental: { automationRate: 0.75, leadRecovery: 0.5 },
+      hvac: { automationRate: 0.7, leadRecovery: 0.55 },
+      realestate: { automationRate: 0.65, leadRecovery: 0.5 },
+      law: { automationRate: 0.7, leadRecovery: 0.45 },
+      insurance: { automationRate: 0.75, leadRecovery: 0.5 },
+      consulting: { automationRate: 0.65, leadRecovery: 0.4 },
+      agency: { automationRate: 0.7, leadRecovery: 0.45 },
+      ecommerce: { automationRate: 0.7, leadRecovery: 0.5 },
+      restaurant: { automationRate: 0.6, leadRecovery: 0.4 },
+      other: { automationRate: 0.7, leadRecovery: 0.45 }
+    };
+
+    function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      var industry = document.getElementById('industry').value;
+      if (!industry) { alert('Please select your industry first.'); return; }
+      var teamSize = parseInt(document.getElementById('teamSize').value);
+      var adminHours = parseInt(document.getElementById('adminHours').value);
+      var hourlyRate = parseInt(document.getElementById('hourlyRate').value);
+      var lostLeads = parseInt(document.getElementById('lostLeads').value);
+      var customerValue = parseFloat(document.getElementById('customerValue').value) || 500;
+      var data = industryData[industry];
+      var monthlyAdminCost = adminHours * hourlyRate * 4.33;
+      var monthlyLeadLoss = lostLeads * customerValue;
+      var totalLoss = monthlyAdminCost + monthlyLeadLoss;
+      var hoursSaved = Math.round(adminHours * data.automationRate);
+      var timeSaved = hoursSaved * hourlyRate * 4.33;
+      var leadsRecovered = Math.round(lostLeads * data.leadRecovery);
+      var revRecovered = leadsRecovered * customerValue;
+      var totalSaved = timeSaved + revRecovered;
+      var setupCost = teamSize <= 3 ? 399 : 2499;
+      var roiWeeks = Math.max(1, Math.ceil((setupCost / (totalSaved / 4.33))));
+      document.getElementById('monthlyTimeCost').textContent = fmt(monthlyAdminCost);
+      document.getElementById('monthlyLeadLoss').textContent = fmt(monthlyLeadLoss);
+      document.getElementById('totalMonthlyLoss').textContent = fmt(totalLoss);
+      document.getElementById('hoursSaved').textContent = hoursSaved + ' hrs/week';
+      document.getElementById('timeSaved').textContent = fmt(timeSaved) + '/month';
+      document.getElementById('leadsRecovered').textContent = leadsRecovered + '/month';
+      document.getElementById('revRecovered').textContent = fmt(revRecovered) + '/month';
+      document.getElementById('totalSavings').textContent = fmt(totalSaved) + '/month';
+      document.getElementById('roiTimeline').textContent = fmt(setupCost) + ' — pays for itself in ' + roiWeeks + ' week' + (roiWeeks > 1 ? 's' : '');
+      var results = document.getElementById('results');
+      results.classList.add('visible');
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('getBlueprintBtn').addEventListener('click', function() {
+      var email = document.getElementById('captureEmail').value.trim();
+      if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email address.'); return; }
+      var btn = this;
+      btn.textContent = 'Generating your blueprint...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      document.getElementById('captureEmail').disabled = true;
+      var leadData = {
+        email: email,
+        industry: document.getElementById('industry').value,
+        teamSize: document.getElementById('teamSize').value,
+        adminHours: document.getElementById('adminHours').value,
+        hourlyRate: document.getElementById('hourlyRate').value,
+        lostLeads: document.getElementById('lostLeads').value,
+        customerValue: document.getElementById('customerValue').value,
+        timestamp: new Date().toISOString()
+      };
+      fetch('/api/calculator-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(leadData) })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.reportUrl) { window.location.href = data.reportUrl; }
+          else { var params = new URLSearchParams(leadData); params.delete('email'); params.delete('timestamp'); window.location.href = '/report?' + params.toString(); }
+        })
+        .catch(function() {
+          var params = new URLSearchParams({ industry: leadData.industry, teamSize: leadData.teamSize, adminHours: leadData.adminHours, hourlyRate: leadData.hourlyRate, lostLeads: leadData.lostLeads, customerValue: leadData.customerValue });
+          window.location.href = '/report?' + params.toString();
+        });
+    });
+  </script>
+
+</body>
+</html>
