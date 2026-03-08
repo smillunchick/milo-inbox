@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides & Resources — Milo</title>
+  <meta name="description" content="Practical guides on AI agents, automation, and AI receptionists for small businesses. No fluff, just what works.">
+  <meta property="og:title" content="Guides & Resources — Milo">
+  <meta property="og:description" content="Practical guides on AI agents, automation, and AI receptionists for small businesses.">
+  <link rel="stylesheet" href="milo-design-system.css">
+  <link rel="canonical" href="https://www.getmilo.dev/blog">
+  <style>
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .blog-card:hover {
+      border-color: var(--copper);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .blog-card__tag {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--copper);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-3);
+    }
+    .blog-card h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-3);
+      line-height: 1.3;
+    }
+    .blog-card p {
+      font-size: var(--text-sm);
+      color: var(--graphite);
+      margin-bottom: var(--space-4);
+    }
+    .blog-card__meta {
+      font-size: var(--text-xs);
+      color: var(--ash);
+    }
+    .blog-card__arrow {
+      font-size: var(--text-sm);
+      color: var(--copper);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="milo-icon.svg" alt="" class="nav__logo-icon">
+        <span class="nav__logo-text">milo</span>
+      </a>
+      <div class="nav__links">
+        <a href="/agents" class="nav__link">AI Agents</a>
+        <a href="/industries" class="nav__link">Industries</a>
+        <a href="/security" class="nav__link">Security</a>
+        <a href="/blog" class="nav__link" style="color: var(--copper); font-weight: 600;">Guides</a>
+        <a href="/calculator" class="nav__link">Free Calculator</a>
+        <a href="/demo" class="btn btn--primary btn--sm">Try Live Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="mb-4">Guides & Resources</h1>
+      <p class="lead text-narrow mb-12">Practical guides on AI agents for small business. No fluff, no theory — just what we've learned building and running AI agent systems in production.</p>
+
+      <div class="blog-grid">
+
+        <a href="/blog/ai-agents-small-business" class="blog-card">
+          <div class="blog-card__tag">Guide</div>
+          <h3>AI Agents for Small Business: The No-BS Guide</h3>
+          <p>Everything you need to know about AI agents — what they actually do, what they cost, and whether they're worth it for a business your size. No hype, just facts.</p>
+          <div class="blog-card__meta">Updated March 2026 · 12 min read</div>
+          <span class="blog-card__arrow">Read guide →</span>
+        </a>
+
+        <a href="/blog/ai-agent-system" class="blog-card">
+          <div class="blog-card__tag">Case Study</div>
+          <h3>How We Built a $6M Pipeline with an AI Agent System</h3>
+          <p>The exact architecture, tools, and workflows behind our 12-agent system. Real numbers, real failures, and what actually moved the needle.</p>
+          <div class="blog-card__meta">March 2026 · 10 min read</div>
+          <span class="blog-card__arrow">Read case study →</span>
+        </a>
+
+        <a href="/blog/best-ai-receptionist" class="blog-card">
+          <div class="blog-card__tag">Comparison</div>
+          <h3>Best AI Receptionist for Small Business (2026)</h3>
+          <p>We compared every AI receptionist and answering service. Here's what actually works, what's overpriced, and what to avoid.</p>
+          <div class="blog-card__meta">Updated March 2026 · 8 min read</div>
+          <span class="blog-card__arrow">Read comparison →</span>
+        </a>
+
+        <a href="/blog/ai-native-agencies" class="blog-card">
+          <div class="blog-card__tag">Industry</div>
+          <h3>AI-Native Agencies: The New Model</h3>
+          <p>Why the next generation of agencies will run on AI agent teams — and how to build one before the window closes.</p>
+          <div class="blog-card__meta">March 2026 · 7 min read</div>
+          <span class="blog-card__arrow">Read article →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted">
+    <div class="container container--narrow text-center">
+      <h2 class="mb-4">Want to see AI agents in action?</h2>
+      <p class="lead mb-8">Skip the reading. Try a live demo and see what an AI agent team actually does for a business like yours.</p>
+      <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="/demo" class="btn btn--primary btn--lg">Try Live Demo</a>
+        <a href="/calculator" class="btn btn--outline btn--lg">Calculate Your ROI</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="milo-icon.svg" alt="" class="footer__logo-icon">
+            <span class="footer__logo-text">milo</span>
+          </div>
+          <p class="footer__brand-text">Stop paying humans for work machines do better. One-time setup. You own it all.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer__links">
+            <li><a href="/agents">AI Agent Teams</a></li>
+            <li><a href="/security">Security Hardening</a></li>
+            <li><a href="/ainative">AI Native Setup</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul class="footer__links">
+            <li><a href="/blog">Guides</a></li>
+            <li><a href="/scanner">Free Security Scanner</a></li>
+            <li><a href="https://github.com/getmilodev">GitHub</a></li>
+            <li><a href="https://x.com/getmilo_dev">@getmilo_dev</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Milo</span>
+        <span>Privacy &middot; Terms</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
