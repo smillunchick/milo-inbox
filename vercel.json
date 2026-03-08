@@ -23,7 +23,8 @@
     { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
     { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" },
     { "source": "/blog/ai-native-agencies", "destination": "/content/blog-ai-native-agencies.html" },
-    { "source": "/blog/ai-agents-small-business", "destination": "/content/blog-ai-agents-small-business.html" }
+    { "source": "/blog/ai-agents-small-business", "destination": "/content/blog-ai-agents-small-business.html" },
+    { "source": "/blog/ai-agent-system", "destination": "/content/blog-ai-agent-system-6m-pipeline.html" }
   ],
   "headers": [
     {
