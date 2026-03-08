@@ -1,8 +1,21 @@
 {
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
     { "source": "/receptionist", "destination": "/receptionist.html" },
     { "source": "/demo", "destination": "/demo.html" },
-    { "source": "/ainative", "destination": "/ainative.html" }
+    { "source": "/ainative", "destination": "/ainative.html" },
+    { "source": "/agents", "destination": "/agents.html" },
+    { "source": "/calculator", "destination": "/calculator.html" },
+    { "source": "/security", "destination": "/security.html" },
+    { "source": "/law-firms", "destination": "/content/law-firm-landing.html" },
+    { "source": "/accountants", "destination": "/content/cpa-landing.html" },
+    { "source": "/hvac", "destination": "/content/hvac-landing.html" },
+    { "source": "/dental", "destination": "/content/dental-landing.html" },
+    { "source": "/veterinary", "destination": "/content/veterinary-landing.html" },
+    { "source": "/compare/answerconnect", "destination": "/content/answerconnect-alternative.html" },
+    { "source": "/compare/ruby-receptionists", "destination": "/content/ruby-receptionists-alternative.html" },
+    { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
+    { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" }
   ],
   "headers": [
     {
@@ -13,21 +26,21 @@
       ]
     },
     {
-      "source": "/receptionist",
+      "source": "/(receptionist|demo|ainative|agents|calculator|security)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(law-firms|accountants|hvac|dental|veterinary)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     },
     {
-      "source": "/demo",
+      "source": "/compare/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/ainative",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
