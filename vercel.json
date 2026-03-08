@@ -14,6 +14,7 @@
     { "source": "/calculator", "destination": "/calculator.html" },
     { "source": "/security", "destination": "/security.html" },
     { "source": "/industries", "destination": "/industries.html" },
+    { "source": "/blog", "destination": "/blog.html" },
     { "source": "/why-so-cheap", "destination": "/content/why-so-cheap.html" },
     { "source": "/law-firms", "destination": "/content/law-firm-landing.html" },
     { "source": "/accountants", "destination": "/content/cpa-landing.html" },
@@ -37,7 +38,7 @@
       ]
     },
     {
-      "source": "/(receptionist|demo|ainative|agents|build|calculator|security|why-so-cheap|industries)",
+      "source": "/(receptionist|demo|ainative|agents|build|calculator|security|why-so-cheap|industries|blog)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
