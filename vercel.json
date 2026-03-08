@@ -21,7 +21,8 @@
     { "source": "/compare/answerconnect", "destination": "/content/answerconnect-alternative.html" },
     { "source": "/compare/ruby-receptionists", "destination": "/content/ruby-receptionists-alternative.html" },
     { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
-    { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" }
+    { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" },
+    { "source": "/blog/ai-native-agencies", "destination": "/content/blog-ai-native-agencies.html" }
   ],
   "headers": [
     {
@@ -45,6 +46,12 @@
     },
     {
       "source": "/compare/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/blog/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
