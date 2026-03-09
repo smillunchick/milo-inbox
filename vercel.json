@@ -21,6 +21,7 @@
     { "source": "/hvac", "destination": "/content/hvac-landing.html" },
     { "source": "/dental", "destination": "/content/dental-landing.html" },
     { "source": "/veterinary", "destination": "/content/veterinary-landing.html" },
+    { "source": "/compare", "destination": "/content/compare-hub.html" },
     { "source": "/compare/answerconnect", "destination": "/content/answerconnect-alternative.html" },
     { "source": "/compare/ruby-receptionists", "destination": "/content/ruby-receptionists-alternative.html" },
     { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
