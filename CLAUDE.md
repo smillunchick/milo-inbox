@@ -155,7 +155,7 @@ Every page needs: scroll reveal (IntersectionObserver), mobile menu toggle, focu
 ## File Organization
 
 ```
-/                       Root pages (index, agents, security, calculator, build, receptionist, ainative, demo)
+/                       Root pages (index, agents, executives, security, calculator, build, ainative, demo)
 /content/               SEO content (blog posts, industry landings, competitor comparisons)
 /api/                   Vercel serverless functions
 /ops/                   Internal operations docs (not served)
@@ -169,10 +169,20 @@ sitemap.xml             All public URLs
 Content pages are served via rewrites in `vercel.json`:
 - `/law-firms` → `/content/law-firm-landing.html`
 - `/compare/answerconnect` → `/content/answerconnect-alternative.html`
-- `/blog/best-ai-receptionist` → `/content/blog-best-ai-receptionist.html`
+- `/blog/ai-agents-small-business` → `/content/blog-ai-agents-small-business.html`
 - etc.
 
-All Stripe checkout links go through redirects: `/buy/starter`, `/buy/team`, `/buy/managed`.
+`/receptionist` redirects (301) to `/agents`. Receptionist blog routes redirect to `/blog`.
+
+All Stripe checkout links go through redirects: `/buy/starter`, `/buy/team`.
+
+## Product Lines
+
+Two product lines only:
+- **AI Agent Teams** (businesses) — $399/agent, $2,499 for 4+ team. Per-agent ownership.
+- **AI for Executives** — $2-5K setup + optional monthly. Personal AI stack, strategic literacy, ongoing optimization.
+
+The receptionist product line is deprecated. Do not reference AI receptionist, phone answering, or answering service in any new content.
 
 ## Preserving Content
 

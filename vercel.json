@@ -5,11 +5,22 @@
     { "source": "/buy/managed", "destination": "https://buy.stripe.com/bJe5kC2K18mP5xw7OmfIs0g", "statusCode": 307 },
     { "source": "/blog/openclaw-silent-failures", "destination": "/blog", "statusCode": 301 },
     { "source": "/blog/openclaw-memory-management", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/top-openclaw-problems-how-to-fix-them", "destination": "/blog", "statusCode": 301 }
+    { "source": "/blog/top-openclaw-problems-how-to-fix-them", "destination": "/blog", "statusCode": 301 },
+    { "source": "/receptionist", "destination": "/agents", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-pricing-comparison", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-no-monthly-fee", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-dental-practices", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-hvac-plumbing", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-law-firms", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-receptionist-veterinary-clinics", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/best-ai-receptionist", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/best-ai-receptionist-contractors", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/ai-phone-answering-service", "destination": "/blog", "statusCode": 301 },
+    { "source": "/blog/missed-calls-cost-calculator", "destination": "/blog", "statusCode": 301 }
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/receptionist", "destination": "/receptionist.html" },
+    { "source": "/executives", "destination": "/executives.html" },
     { "source": "/demo", "destination": "/demo.html" },
     { "source": "/ainative", "destination": "/ainative.html" },
     { "source": "/agents", "destination": "/agents.html" },
@@ -36,25 +47,15 @@
     { "source": "/compare/trillet", "destination": "/content/trillet-alternative.html" },
     { "source": "/compare/ring-eden", "destination": "/content/ring-eden-alternative.html" },
     { "source": "/compare/abby-connect", "destination": "/content/abby-connect-alternative.html" },
-    { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" },
     { "source": "/blog/ai-native-agencies", "destination": "/content/blog-ai-native-agencies.html" },
     { "source": "/blog/ai-agents-small-business", "destination": "/content/blog-ai-agents-small-business.html" },
     { "source": "/blog/ai-agent-system", "destination": "/content/blog-ai-agent-system-6m-pipeline.html" },
     { "source": "/blog/build-vs-buy-ai-agents", "destination": "/content/blog-build-vs-buy-ai-agents.html" },
     { "source": "/blog/one-time-vs-monthly-ai-subscriptions", "destination": "/content/blog-one-time-vs-monthly-ai-subscriptions.html" },
     { "source": "/blog/how-much-does-ai-agent-cost", "destination": "/content/blog-how-much-does-ai-agent-cost.html" },
-    { "source": "/blog/missed-calls-cost-calculator", "destination": "/content/blog-missed-calls-cost-calculator.html" },
-    { "source": "/blog/ai-receptionist-pricing-comparison", "destination": "/content/blog-ai-receptionist-pricing-comparison.html" },
     { "source": "/blog/ai-agent-team-cost-2026", "destination": "/content/blog-ai-agent-team-cost-2026.html" },
-    { "source": "/blog/ai-phone-answering-service", "destination": "/content/blog-ai-phone-answering-service.html" },
-    { "source": "/blog/ai-receptionist-dental-practices", "destination": "/content/blog-ai-receptionist-dental-practices.html" },
-    { "source": "/blog/ai-receptionist-hvac-plumbing", "destination": "/content/blog-ai-receptionist-hvac-plumbing.html" },
-    { "source": "/blog/ai-receptionist-law-firms", "destination": "/content/blog-ai-receptionist-law-firms.html" },
-    { "source": "/blog/ai-receptionist-veterinary-clinics", "destination": "/content/blog-ai-receptionist-veterinary-clinics.html" },
     { "source": "/blog/ai-agent-team-small-business", "destination": "/content/blog-ai-agent-team-small-business.html" },
     { "source": "/blog/how-to-automate-business-with-ai", "destination": "/content/blog-how-to-automate-business-with-ai.html" },
-    { "source": "/blog/ai-receptionist-no-monthly-fee", "destination": "/content/blog-ai-receptionist-no-monthly-fee.html" },
-    { "source": "/blog/best-ai-receptionist-contractors", "destination": "/content/blog-best-ai-receptionist-contractors.html" }
   ],
   "headers": [
     {
@@ -65,7 +66,7 @@
       ]
     },
     {
-      "source": "/(receptionist|demo|ainative|agents|build|calculator|security|why-so-cheap|industries|blog)",
+      "source": "/(executives|demo|ainative|agents|build|calculator|security|why-so-cheap|industries|blog)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
