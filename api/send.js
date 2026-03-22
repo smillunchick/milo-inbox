@@ -48,9 +48,8 @@ export default async function handler(req, res) {
     return res.status(409).json({ error: 'Duplicate: same to+subject sent in last 24h' });
   }
 
-  const replyTo = reply_to || process.env.DEFAULT_REPLY_TO;
-  const sender = from || process.env.DEFAULT_FROM;
-  if (!sender) return res.status(500).json({ error: 'Set DEFAULT_FROM env or pass from' });
+  const replyTo = reply_to || process.env.DEFAULT_REPLY_TO || 'milo@getmilo.dev';
+  const sender = from || process.env.DEFAULT_FROM || 'Milo <milo@getmilo.dev>';
 
   const payload = { from: sender, to: [].concat(to), subject };
   if (text) payload.text = text;
