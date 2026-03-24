@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Pilot Program — AI Agent Team for Your Business | Milo</title>
+<meta name="description" content="Try an AI agent team for free. 14 days, no payment, no commitment. We build it, you test it, you decide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/milo-design-system.css">
+<style>
+  .pilot-hero { padding: var(--sp-16) 0 var(--sp-8); }
+  .pilot-hero__title { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin-bottom: var(--sp-4); }
+  .pilot-hero__sub { font-size: var(--text-lg); color: var(--text-2); max-width: 560px; line-height: 1.7; }
+
+  .pilot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-12);
+    padding: var(--sp-8) 0 var(--sp-16);
+  }
+  .pilot-details h3 { font-size: var(--text-xl); margin-bottom: var(--sp-4); }
+  .pilot-details ul { list-style: none; padding: 0; margin: 0 0 var(--sp-8); }
+  .pilot-details li {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-2);
+    line-height: 2.2;
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+  }
+  .pilot-details li::before {
+    content: '//';
+    color: var(--gold-text);
+    flex-shrink: 0;
+  }
+
+  .form-group { margin-bottom: var(--sp-5); }
+  .form-group:last-of-type { margin-bottom: var(--sp-6); }
+  .label__opt { font-weight: 400; color: var(--text-3); font-size: var(--text-xs); margin-left: var(--sp-1); }
+  .trust-line {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-3);
+    text-align: center;
+    margin-top: var(--sp-4);
+    letter-spacing: 0.02em;
+  }
+
+  .success-panel { text-align: center; padding: var(--sp-12) var(--sp-6); }
+  .success-panel__icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: color-mix(in oklch, var(--success), transparent 90%);
+    border: 1.5px solid color-mix(in oklch, var(--success), transparent 70%);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: var(--sp-6);
+  }
+  .success-panel__icon svg { width: 24px; height: 24px; stroke: var(--success); stroke-width: 2.5; fill: none; }
+  .success-panel h2 { font-size: var(--text-2xl); margin-bottom: var(--sp-3); }
+  .success-panel p { color: var(--text-2); font-size: var(--text-base); max-width: 420px; margin: 0 auto; line-height: 1.65; }
+  .hide { display: none; }
+
+  @media (max-width: 768px) {
+    .pilot-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/demo" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/demo">Start a project</a>
+</div>
+
+<main id="main">
+
+<section class="pilot-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">PILOT</span>
+      <span class="spec-coord">// free trial</span>
+    </div>
+    <h1 class="pilot-hero__title reveal" data-delay="1">Try an AI agent team. <span class="accent">Free for 14 days.</span></h1>
+    <p class="pilot-hero__sub reveal" data-delay="2">We build it, you test it, you decide. No payment, no commitment, no catch.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="pilot-grid">
+
+      <div class="pilot-details reveal" data-delay="2">
+        <h3>What you get</h3>
+        <ul>
+          <li>AI receptionist that answers every call</li>
+          <li>Lead capture and qualification — 24/7</li>
+          <li>Automated follow-up sequences</li>
+          <li>CRM integration (yours or ours)</li>
+          <li>Custom trained on your business</li>
+          <li>Daily performance reports</li>
+        </ul>
+
+        <h3>How it works</h3>
+        <ul>
+          <li>Apply below (takes 30 seconds)</li>
+          <li>We schedule a 10-min setup call</li>
+          <li>Agents go live within 48 hours</li>
+          <li>Run for 14 days — see real results</li>
+          <li>Keep it or walk away. Your call.</li>
+        </ul>
+
+        <h3>Who it's for</h3>
+        <ul>
+          <li>HVAC, plumbing, and trades</li>
+          <li>Dental and medical practices</li>
+          <li>Law firms (PI, family, estate)</li>
+          <li>Any service business with 5-100 employees</li>
+        </ul>
+      </div>
+
+      <div>
+        <div id="form-card">
+          <form id="pilot-form">
+            <div class="form-group">
+              <label class="label" for="field-name">Your name</label>
+              <input class="input" type="text" id="field-name" name="name" required placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-email">Work email</label>
+              <input class="input" type="email" id="field-email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-company">Company name</label>
+              <input class="input" type="text" id="field-company" name="company" required placeholder="Acme Plumbing" autocomplete="organization">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-industry">Industry</label>
+              <select class="select" id="field-industry" name="industry">
+                <option value="">Select one...</option>
+                <option value="hvac">HVAC / Plumbing / Trades</option>
+                <option value="dental">Dental Practice</option>
+                <option value="medical">Medical / Veterinary</option>
+                <option value="legal">Law Firm</option>
+                <option value="other">Other Service Business</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-size">Team size</label>
+              <select class="select" id="field-size" name="team_size">
+                <option value="">Select one...</option>
+                <option value="1-5">1-5 employees</option>
+                <option value="6-20">6-20 employees</option>
+                <option value="21-50">21-50 employees</option>
+                <option value="51-100">51-100 employees</option>
+                <option value="100+">100+ employees</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-pain">Biggest phone/front desk headache? <span class="label__opt">(optional)</span></label>
+              <textarea class="textarea" id="field-pain" name="pain_point" rows="2" placeholder="e.g. Missed calls after hours, no time for follow-ups, front desk overwhelmed..." style="min-height: 80px;"></textarea>
+            </div>
+            <input type="hidden" name="ref" id="ref-field" value="">
+            <button type="submit" class="btn btn--dark btn--full btn--lg">Apply for Free Pilot</button>
+            <p class="trust-line">no payment info needed &middot; limited spots &middot; we respond within 24 hours</p>
+          </form>
+        </div>
+
+        <div class="hide" id="success-card">
+          <div class="success-panel">
+            <div class="success-panel__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12" class="success-check-anim"></polyline></svg>
+            </div>
+            <h2>Application received.</h2>
+            <p>We'll review your details and reach out to <span style="color: var(--gold-text); font-weight: 600;" id="echo-company"></span> within 24 hours to schedule your setup call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', function() {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+</script>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var refEl = document.getElementById('ref-field');
+  if (params.get('ref')) refEl.value = params.get('ref');
+
+  document.getElementById('pilot-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    var fd = new FormData(e.target);
+    var d = {};
+    fd.forEach(function(v, k) { d[k] = v; });
+
+    var ts = new Date().toISOString();
+    var lines = [
+      'PILOT APPLICATION',
+      'Name: ' + d.name,
+      'Email: ' + d.email,
+      'Company: ' + d.company,
+      'Industry: ' + (d.industry || 'not specified'),
+      'Team size: ' + (d.team_size || 'not specified'),
+      'Source: ' + (d.ref || 'direct'),
+      'Time: ' + ts
+    ];
+    if (d.pain_point) lines.push('Pain point: ' + d.pain_point);
+
+    fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: 'milo@getmilo.dev',
+        subject: 'PILOT APPLICATION: ' + d.name + ' — ' + (d.company || 'no company'),
+        text: lines.join('\n'),
+        from: 'Milo Pilot <milo@getmilo.dev>',
+        reply_to: d.email
+      })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        document.getElementById('form-card').classList.add('hide');
+        document.getElementById('echo-company').textContent = d.company || d.email;
+        document.getElementById('success-card').classList.remove('hide');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Apply for Free Pilot';
+        alert('Something went wrong. Please try again or email milo@getmilo.dev directly.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Apply for Free Pilot';
+      alert('Connection error. Please try again.');
+    });
+  });
+})();
+</script>
+</body>
+</html>

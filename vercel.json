@@ -160,6 +160,10 @@
       "destination": "/content/veterinary-landing.html"
     },
     {
+      "source": "/pilot",
+      "destination": "/content/pilot.html"
+    },
+    {
       "source": "/compare",
       "destination": "/content/compare-hub.html"
     },
