@@ -273,15 +273,18 @@
     ];
     if (d.pain_point) lines.push('Pain point: ' + d.pain_point);
 
-    fetch('/api/send', {
+    fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        to: 'milo@getmilo.dev',
-        subject: 'PILOT APPLICATION: ' + d.name + ' — ' + (d.company || 'no company'),
-        text: lines.join('\n'),
-        from: 'Milo Pilot <milo@getmilo.dev>',
-        reply_to: d.email
+        name: d.name,
+        email: d.email,
+        company: d.company,
+        industry: d.industry,
+        team_size: d.team_size,
+        pain_point: d.pain_point,
+        ref: d.ref,
+        type: 'pilot'
       })
     })
     .then(function(res) {

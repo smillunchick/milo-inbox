@@ -334,16 +334,16 @@
     ];
     if (d.message) lines.push('Notes: ' + d.message);
 
-    var dest = 'leads' + String.fromCharCode(64) + D;
-
-    fetch('/api/send', {
+    fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        to: dest,
-        subject: 'LEAD: ' + d.name + ' — ' + (d.firm || 'no company'),
-        text: lines.join('\n'),
-        from: 'Milo Leads <leads' + String.fromCharCode(64) + D + '>'
+        name: d.name,
+        email: d.email,
+        company: d.firm,
+        message: d.message,
+        ref: d.ref,
+        type: 'demo'
       })
     })
     .then(function(res) {
