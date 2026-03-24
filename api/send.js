@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   // Auth: require Bearer token
   const authHeader = req.headers.authorization || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
-  const validToken = process.env.MILO_SEND_KEY;
+  const validToken = process.env.MILO_SEND_KEY || process.env.INTERNAL_API_KEY;
   if (!validToken || token !== validToken) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
