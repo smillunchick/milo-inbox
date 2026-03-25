@@ -164,6 +164,10 @@
       "destination": "/content/pilot.html"
     },
     {
+      "source": "/hvac-roi",
+      "destination": "/content/hvac-roi.html"
+    },
+    {
       "source": "/compare",
       "destination": "/content/compare-hub.html"
     },

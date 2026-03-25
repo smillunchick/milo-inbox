@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Missed Call Problem: What It Really Costs an HVAC Company | Milo</title>
+<meta name="description" content="A 10-person HVAC company loses an average of $87,000/year to missed calls. Here's the math — and the fix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/milo-design-system.css">
+<style>
+  .roi-hero { padding: var(--sp-16) 0 var(--sp-8); }
+  .roi-hero__kicker { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--gold-text); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--sp-4); }
+  .roi-hero__title { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin-bottom: var(--sp-4); max-width: 720px; }
+  .roi-hero__sub { font-size: var(--text-lg); color: var(--text-2); max-width: 580px; line-height: 1.7; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); padding: var(--sp-10) 0; }
+  .stat-card { background: var(--surface-1); border: 1px solid var(--border-1); border-radius: var(--radius-lg); padding: var(--sp-8) var(--sp-6); text-align: center; }
+  .stat-card__number { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--gold-text); line-height: 1; margin-bottom: var(--sp-2); }
+  .stat-card__label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .math-section { padding: var(--sp-12) 0; border-top: 1px solid var(--border-1); }
+  .math-section h2 { font-size: var(--text-2xl); margin-bottom: var(--sp-8); }
+  .math-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+  .math-table th { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; text-align: left; padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--border-1); }
+  .math-table td { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+  .math-table tr:last-child td { border-bottom: none; font-weight: 600; font-size: var(--text-base); }
+  .math-table .num { font-family: var(--font-mono); color: var(--text-1); }
+  .math-table .total-row td { border-top: 2px solid var(--gold-text); color: var(--gold-text); padding-top: var(--sp-5); }
+
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); padding: var(--sp-10) 0; }
+  .scenario-card { background: var(--surface-1); border: 1px solid var(--border-1); border-radius: var(--radius-lg); padding: var(--sp-8); }
+  .scenario-card--milo { border-color: var(--gold-text); background: color-mix(in oklch, var(--gold-text), var(--surface-1) 94%); }
+  .scenario-card h3 { font-size: var(--text-lg); margin-bottom: var(--sp-4); }
+  .scenario-card ul { list-style: none; padding: 0; margin: 0 0 var(--sp-6); }
+  .scenario-card li { font-size: var(--text-sm); color: var(--text-2); line-height: 2.2; display: flex; align-items: baseline; gap: var(--sp-2); }
+  .scenario-card li::before { content: '//'; font-family: var(--font-mono); color: var(--text-3); flex-shrink: 0; font-size: var(--text-xs); }
+  .scenario-card--milo li::before { color: var(--gold-text); }
+  .scenario-card__bottom { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-3); padding-top: var(--sp-4); border-top: 1px solid var(--border-1); }
+  .scenario-card--milo .scenario-card__bottom { color: var(--gold-text); border-color: color-mix(in oklch, var(--gold-text), transparent 60%); }
+
+  .cta-section { padding: var(--sp-16) 0; text-align: center; border-top: 1px solid var(--border-1); }
+  .cta-section h2 { font-size: var(--text-3xl); margin-bottom: var(--sp-4); }
+  .cta-section p { font-size: var(--text-lg); color: var(--text-2); max-width: 520px; margin: 0 auto var(--sp-8); line-height: 1.7; }
+
+  @media (max-width: 768px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/hvac" class="nav__link">HVAC</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/pilot" class="nav__cta">Free pilot</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/hvac">HVAC</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/pilot">Free pilot</a>
+</div>
+
+<main id="main">
+
+<section class="roi-hero">
+  <div class="wrap">
+    <div class="roi-hero__kicker reveal">HVAC &amp; Plumbing &mdash; Revenue Analysis</div>
+    <h1 class="roi-hero__title reveal" data-delay="1">The missed call problem: what it really costs a <span class="accent">10-person HVAC company</span></h1>
+    <p class="roi-hero__sub reveal" data-delay="2">Most owners know missed calls cost money. Almost none have run the actual number. We did.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat-card reveal">
+        <div class="stat-card__number">30%</div>
+        <div class="stat-card__label">of inbound calls missed during peak season</div>
+      </div>
+      <div class="stat-card reveal" data-delay="1">
+        <div class="stat-card__number">$650</div>
+        <div class="stat-card__label">average job value for a residential HVAC call</div>
+      </div>
+      <div class="stat-card reveal" data-delay="2">
+        <div class="stat-card__number">$87k</div>
+        <div class="stat-card__label">average annual revenue lost to missed calls</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="math-section">
+  <div class="wrap">
+    <h2 class="reveal">The math for a typical 10-person shop</h2>
+    <table class="math-table reveal" data-delay="1">
+      <thead>
+        <tr>
+          <th>Assumption</th>
+          <th>Source / basis</th>
+          <th class="num">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Inbound calls per day (busy season)</td>
+          <td>Industry average for 10-tech shop</td>
+          <td class="num">25</td>
+        </tr>
+        <tr>
+          <td>Calls missed or going to voicemail</td>
+          <td>30% miss rate (BIA/Kelsey research)</td>
+          <td class="num">7-8/day</td>
+        </tr>
+        <tr>
+          <td>Callers who don't leave a message</td>
+          <td>75% of missed callers hang up (Hatch study)</td>
+          <td class="num">5-6/day</td>
+        </tr>
+        <tr>
+          <td>Callers who call a competitor instead</td>
+          <td>85% of callers who don't reach you (Invoca)</td>
+          <td class="num">4-5/day</td>
+        </tr>
+        <tr>
+          <td>Average residential job value</td>
+          <td>ACCA industry data, HVAC-Talk surveys</td>
+          <td class="num">$650</td>
+        </tr>
+        <tr>
+          <td>Busy season length</td>
+          <td>June–September (4 months)</td>
+          <td class="num">120 days</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>Annual revenue lost to missed calls (busy season only)</strong></td>
+          <td class="num"><strong>$78,000–$97,500</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-3); margin-top: var(--sp-4);">
+      Conservative scenario: 4 lost callers/day × $650 × 120 days = $78,000. This excludes after-hours calls, which add another $20-40k for shops without 24/7 coverage.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="reveal" style="font-size: var(--text-2xl); padding-top: var(--sp-4);">Two approaches to the problem</h2>
+    <div class="scenario-grid">
+      <div class="scenario-card reveal" data-delay="1">
+        <h3>The old way</h3>
+        <ul>
+          <li>Hire an additional dispatcher: $45,000/year</li>
+          <li>Answering service: $400–$1,200/month</li>
+          <li>After-hours coverage: extra $300–800/month</li>
+          <li>Still drops calls during surge moments</li>
+          <li>Inconsistent — quality varies by person</li>
+          <li>Doesn't follow up automatically</li>
+        </ul>
+        <div class="scenario-card__bottom">Annual cost: $50,000–$65,000 | Gaps remain</div>
+      </div>
+      <div class="scenario-card scenario-card--milo reveal" data-delay="2">
+        <h3>The AI agent way</h3>
+        <ul>
+          <li>Answers every call — instantly, 24/7</li>
+          <li>Captures name, address, issue, urgency</li>
+          <li>Routes emergencies to on-call tech</li>
+          <li>Follows up automatically if no booking</li>
+          <li>Consistent quality on every call</li>
+          <li>Scales infinitely during peak</li>
+        </ul>
+        <div class="scenario-card__bottom">Annual cost: $4,800–$11,988/year | Zero gaps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <h2 class="reveal">See the difference in your operation — free</h2>
+    <p class="reveal" data-delay="1">We build and deploy your AI agent team at no cost for 14 days. No payment info, no commitment. You run the numbers on your own calls.</p>
+    <a href="/pilot" class="btn btn--dark btn--lg reveal" data-delay="2">Apply for free pilot</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/hvac">HVAC</a>
+      <a href="/calculator">Calculator</a>
+      <a href="/pilot">Free pilot</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', function() {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+</script>
+</body>
+</html>
