@@ -253,6 +253,51 @@
 
 <p>If you run a small clinic, law firm, or service business and want to test AI call handling for 30 days with no commitment, we're running a pilot program: <a href="/pilot" style="color: var(--gold-text);">getmilo.dev/pilot</a></p>
 
+<div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: var(--sp-6); margin-top: var(--sp-8);">
+  <h3 style="margin-top: 0; font-size: var(--text-lg); color: var(--text-1);">Get the missed-call calculator for your industry</h3>
+  <p style="font-size: var(--text-base); color: var(--text-2); margin-bottom: var(--sp-4);">We're building industry-specific calculators for dental, law, vet, and more. Drop your email and we'll send yours when it's ready — plus a short guide on measuring your actual miss rate.</p>
+  <form id="blog-capture" style="display: flex; gap: var(--sp-3); flex-wrap: wrap;">
+    <input type="email" name="email" placeholder="you@yourpractice.com" required style="flex: 1; min-width: 200px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text-1); font-size: var(--text-sm);">
+    <select name="industry" style="padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text-2); font-size: var(--text-sm);">
+      <option value="">Your industry</option>
+      <option value="hvac">HVAC / Plumbing</option>
+      <option value="dental">Dental</option>
+      <option value="law">Law</option>
+      <option value="vet">Veterinary</option>
+      <option value="chiro">Chiropractic</option>
+      <option value="pt">Physical Therapy</option>
+      <option value="dermatology">Dermatology</option>
+      <option value="urgent-care">Urgent Care</option>
+      <option value="other">Other</option>
+    </select>
+    <button type="submit" class="btn btn--dark" style="white-space: nowrap;">Send me the calculator</button>
+  </form>
+  <p id="blog-capture-success" class="hide" style="color: var(--gold-text); font-size: var(--text-sm); margin-top: var(--sp-3);">Got it — we'll send your calculator when it's ready.</p>
+</div>
+
+<script>
+document.getElementById('blog-capture').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = this.email.value;
+  var industry = this.industry.value;
+  fetch('/api/lead', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      name: email.split('@')[0],
+      email: email,
+      industry: industry,
+      type: 'blog-calculator',
+      ref: 'blog-missed-calls-cost',
+      message: 'Signed up for industry calculator from blog post'
+    })
+  }).then(function() {
+    document.getElementById('blog-capture').style.display = 'none';
+    document.getElementById('blog-capture-success').style.display = 'block';
+  });
+});
+</script>
+
     </div>
   </div>
 </section>
